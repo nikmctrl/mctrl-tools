@@ -5,5 +5,5 @@
     mctrl-formatter.url = "github:nikmctrl/mctrl-formatter";
   };
 
-  outputs = { self, mctrl-formatter, ... }: mctrl-formatter;
+  outputs = { self, mctrl-formatter, ... }: mctrl-formatter.outputs;
 }

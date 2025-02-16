@@ -10,7 +10,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    mctrl-formatter.url = "github:nikmctrl/mctrl-formatter?ref=git-hooks";
+    mctrl-formatter.url = "github:nikmctrl/mctrl-formatter";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     flake-schemas.url = "github:DeterminateSystems/flake-schemas";
     flake-utils.url = "github:numtide/flake-utils";

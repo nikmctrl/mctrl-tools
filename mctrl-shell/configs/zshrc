@@ -1,0 +1,68 @@
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+fi
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+## Amazing zsh plugins
+zinit light zsh-users/zsh-completions
+zinit light "olets/zsh-abbr"
+zinit light "olets/zsh-autosuggestions-abbreviations-strategy"
+zinit light "hlissner/zsh-autopair"
+zinit light "zsh-users/zsh-autosuggestions"
+zinit light laggardkernel/git-ignore
+
+
+# zinit light "micans/apparix"
+# zinit light "gretzky/auto-color-ls"
+# zinit light "aikow/zsh-auto-ls"
+# zinit light "marlonrichert/zsh-autocomplete"
+# zinit light "fdellwing/zsh-bat"
+# zinit light "casonadams/bitwarden-cli"
+# zinit light "zshzoo/cd-ls"
+# zinit light "SleepyBag/zsh-confer"
+# zinit light "toku-sa-n/zsh-dot-up"
+# zinit light "kazhala/dotbare"
+# zinit light "brokentoaster/zsh-explainshell"
+# zinit light "aubreypwd/zsh-plugin-download"
+# zinit light "birdhackor/zsh-eza-ls-plugin"
+# zinit light "aubreypwd/zsh-plugin-fd"
+# zinit light "marzocchi/zsh-notify"
+# zinit light ""
+# zinit light ""
+# zinit light ""
+# zinit light ""
+# zinit light ""
+# zinit light ""
+
+# zinit ice wait lucid
+# zinit load redxtech/zsh-fzf-utils
+### End of Zinit's installer chunk
+
+
+# zinit light "sigoden/argc-completions"
+# zinit light "dim-an/cod"
+# zinit light "lipov3cz3k/zsh-uv"
+
+alias gi="git-ignore"
+
+
+zinit snippet "_starship.zsh"
+
+
+eval "$(starship init zsh)"
+
+
+zinit light "zsh-users/zsh-syntax-highlighting"

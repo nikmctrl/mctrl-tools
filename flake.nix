@@ -30,12 +30,14 @@
       flake-schemas,
       flake-utils,
       ...
-    }:
+    }@inputs:
 
     flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        mctrl-shell = import ./mctrl-shell { inherit inputs pkgs; };
+
       in
       {
         checks = {
@@ -65,8 +67,10 @@
                 zsh
               ]);
           };
-          mctrl-shell = pkgs.mkShell { buildInputs = [ self.packages.${system}.mctrl-shell ]; };
         };
+
+        inherit mctrl-shell;
+
       }
     )
     // {
@@ -74,6 +78,5 @@
 
       inherit (flake-schemas) schemas;
 
-      inherit (self.packages.aarch64-darwin) mctrl-shell;
     };
 }

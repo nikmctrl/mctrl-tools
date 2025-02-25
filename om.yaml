@@ -1,3 +1,29 @@
+ci:
+  default:
+    omnix:
+      dir: .
+      steps:
+        custom:
+          om-show:
+            type: app
+            args:
+              - show
+              - .
+    doc:
+      dir: doc
+    registry:
+      dir: crates/omnix-init/registry
+      steps:
+        build:
+          enable: false
+        # Run `nix flake check` for checking the 'templates' outputs
+        flake-check:
+          enable: true
+    cli-test-dep-cache:
+      dir: crates/omnix-cli/tests
+      steps:
+        lockfile:
+          enable: false
 develop:
   default:
     readme: |
@@ -13,5 +39,15 @@ develop:
         - you can use the `nix shell` command.
 
       ```sh-session
-      just watch <args>
+      just { fmt, lint, ... }
       ```
+health:
+  default:
+    nix-version:
+      supported: '>=2.20.0'
+    caches:
+      required:
+        - https://om.cachix.org
+        - https://nikmctrl.cachix.org
+    direnv:
+      required: true

@@ -67,16 +67,14 @@
                 zsh
               ]);
           };
+
+          inherit mctrl-shell;
         };
 
-        inherit mctrl-shell;
-
+        formatter = mctrl-formatter.packages.${system}.mctrl-formatter;
       }
-    )
-    // {
-      inherit (mctrl-formatter) formatter packages;
-
-      inherit (flake-schemas) schemas;
-
-    };
+      // {
+        inherit (flake-schemas) schemas;
+      }
+    );
 }

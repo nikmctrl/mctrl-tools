@@ -1,8 +1,15 @@
 { pkgs, ... }:
 
 {
+
+  imports = [
+    ./developer.nix
+    ./devops.nix
+  ];
+
   out.pkgs = with pkgs; [
     just
+
     eza
     bat
     fd
@@ -23,6 +30,5 @@
 
     yai
     navi
-
   ];
 }

@@ -1,36 +1,41 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 
 {
   options.out = {
     pkgs = lib.mkOption { type = lib.types.listOf lib.types.package; };
 
     aliases = lib.mkOption {
-      type = lib.types.listOf (
-        lib.types.submodule {
-          options = {
-            name = lib.mkOption { type = lib.types.string; };
-            value = lib.mkOption { type = lib.types.string; };
-          };
-          # TODO: Add default aliases
-          # config = {
-          # name = "alias";
-          # value = "alias";
-          # };
-
+      type = lib.types.listOf (lib.types.attrsOf lib.types.string);
+      example = [
+        {
+          name = "alias";
+          value = "alias";
         }
-      );
-      files = lib.mkOption { type = lib.types.attrsOf lib.types.string; };
+      ];
+    };
+
+    files = lib.mkOption {
+      type = lib.types.attrsOf lib.types.string;
+      example = {
+        ".zshrc" = builtins.readFile ./configs/zshrc;
+      };
     };
   };
 
-  config = {
-    # out.pkgs = [ ];
+  config = rec {
+    out.pkgs = [ ];
+
     out.aliases = [
       {
-        name = "alias";
-        value = "alias";
+        name = "ls";
+        value = "eza";
       }
     ];
 
+    out.files = {
+      ".aliases.zsh" = lib.concatStringsSep "\n" (
+        map ({ name, value }: "alias ${name}=${value}") out.aliases
+      );
+    };
   };
 }

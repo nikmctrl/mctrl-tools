@@ -1,0 +1,53 @@
+ci:
+#   default:
+#     omnix:
+#       dir: .
+#       steps:
+#         custom:
+#           om-show:
+#             type: app
+#             args:
+#               - show
+#               - .
+#     doc:
+#       dir: doc
+#   registry:
+#     dir: crates/omnix-init/registry
+#     steps:
+#       build:
+#         enable: false
+#       # Run `nix flake check` for checking the 'templates' outputs
+#       flake-check:
+#         enable: true
+#   cli-test-dep-cache:
+#     dir: crates/omnix-cli/tests
+#     steps:
+#       lockfile:
+#         enable: false
+develop:
+  default:
+    readme: |
+      🍾 Welcome to the **mctrl-tools** project, a collection of tools that we use, and make it easier
+      (we configured everything for you), faster (every binary is cached and uploaded to cachix), and
+      more reliable.
+
+      To run our tools:
+        - you can use the `just` command.
+        - you can install them in your system.
+        - you can use the `nix develop` command.
+        - you can use the `nix run` command.
+        - you can use the `nix shell` command.
+
+      ```sh-session
+      just { fmt, lint, ... }
+      ```
+health:
+  default:
+    nix-version:
+      supported: '>=2.20.0'
+    caches:
+      required:
+        - https://om.cachix.org
+        - https://nikmctrl.cachix.org
+    direnv:
+      required: true

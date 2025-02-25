@@ -3,31 +3,28 @@ alias d := dev
 
 
 fmt:
-  cmd = "nix fmt"
+  @nix fmt
 
+# Start a development shell with all dependencies
 dev:
-  cmd = "nix develop"
+  @nix develop
 
 # Update all dependencies
 update:
-  cmd = "nix flake update"
+  @nix flake update
 
 # Run security checks
 security:
-  cmd = "pip-audit"
-  bandit -r .
+#   cmd = "pip-audit"
+#   bandit -r .
 
 # Build the project
 build:
-    nix build
+  @om ci
 
 # Show all available just commands
 help:
-  cmd = "just --list"
-
-
+  @just --list
 
 ci: 
-  om ci 
-
-
+  @om ci default

@@ -58,8 +58,14 @@
         devShells = {
           default = pkgs.mkShell {
             inherit (self.checks.${system}.pre-commit-check) shellHook;
-            buildInputs = self.checks.${system}.pre-commit-check.enabledPackages ++ (with pkgs; [ just ]);
+            buildInputs =
+              self.checks.${system}.pre-commit-check.enabledPackages
+              ++ (with pkgs; [
+                just
+                zsh
+              ]);
           };
+          mctrl-shell = pkgs.mkShell { buildInputs = [ self.packages.${system}.mctrl-shell ]; };
         };
       }
     )
@@ -67,5 +73,7 @@
       inherit (mctrl-formatter) formatter packages;
 
       inherit (flake-schemas) schemas;
+
+      inherit (self.packages.aarch64-darwin) mctrl-shell;
     };
 }

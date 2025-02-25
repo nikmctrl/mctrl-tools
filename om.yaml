@@ -1,0 +1,17 @@
+develop:
+  default:
+    readme: |
+      🍾 Welcome to the **mctrl-tools** project, a collection of tools that we use, and make it easier
+      (we configured everything for you), faster (every binary is cached and uploaded to cachix), and
+      more reliable.
+
+      To run our tools:
+        - you can use the `just` command.
+        - you can install them in your system.
+        - you can use the `nix develop` command.
+        - you can use the `nix run` command.
+        - you can use the `nix shell` command.
+
+      ```sh-session
+      just watch <args>
+      ```

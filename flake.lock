@@ -16,21 +16,6 @@
         "type": "github"
       }
     },
-    "flake-schemas": {
-      "locked": {
-        "lastModified": 1739197601,
-        "narHash": "sha256-9SHIOIDv/JZhE/OaBQ35v86ggQ93SUVA/9tEl0WmGGA=",
-        "owner": "DeterminateSystems",
-        "repo": "flake-schemas",
-        "rev": "b960fc9779e9b29b01bcb4db81b236387ad7e5c8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DeterminateSystems",
-        "repo": "flake-schemas",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -193,7 +178,6 @@
     },
     "root": {
       "inputs": {
-        "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
         "mctrl-formatter": "mctrl-formatter",
         "nixpkgs": "nixpkgs_3",

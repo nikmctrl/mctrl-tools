@@ -1,11 +1,11 @@
 ci:
-#   default:
-#     omnix:
-#       dir: .
-#       steps:
-#         custom:
-#           om-show:
-#             type: app
+  default:
+    omnix:
+      dir: .
+      steps:
+        custom:
+          om-show:
+            type: app
 #             args:
 #               - show
 #               - .

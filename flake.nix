@@ -18,7 +18,7 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     flake-utils.url = "github:numtide/flake-utils";
-    flake-schemas.url = "github:DeterminateSystems/flake-schemas";
+    # flake-schemas.url = "github:DeterminateSystems/flake-schemas";
   };
 
   outputs =
@@ -27,7 +27,6 @@
       nixpkgs,
       mctrl-formatter,
       pre-commit-hooks,
-      flake-schemas,
       flake-utils,
       ...
     }@inputs:
@@ -74,7 +73,7 @@
         formatter = mctrl-formatter.packages.${system}.mctrl-formatter;
       }
       // {
-        inherit (flake-schemas) schemas;
+        # inherit (flake-schemas) schemas;
       }
     );
 }
